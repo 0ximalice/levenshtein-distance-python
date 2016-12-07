@@ -1,4 +1,5 @@
 import numpy
+import sys
 
 def levenshteinDistance(s1, s2):
     if len(s1) > len(s2):
@@ -15,17 +16,21 @@ def levenshteinDistance(s1, s2):
         distances = distances_
     return distances[-1]
 
-print('------ Calculating ------')
-msg = ''
-lab = ''
-with open('text.lab') as f:
-    lab = f.read().replace('\n', '')
+if len(sys.argv) >= 3:
+	print('------ Calculating ------')
+	msg = ''
+	lab = ''
+	with open('text.lab') as f:
+	    lab = f.read().replace('\n', '')
 
-with open('text.res') as f:
-    msg = f.read().replace('\n', '')
+	with open('text.res') as f:
+	    msg = f.read().replace('\n', '')
 
-#result = wer(list(lab), list(msg), False)
-result = levenshteinDistance(lab, msg)
-bigger = max(len(lab), len(msg))
-result = ((bigger - result) / bigger) * 100
-print('Accuracy : %.2f%%'%(result))
+	#result = wer(list(lab), list(msg), False)
+	result = levenshteinDistance(lab, msg)
+	bigger = max(len(lab), len(msg))
+	result = ((bigger - result) / bigger) * 100
+	print('Accuracy : %.2f%%'%(result))
+else:
+	print('Error: Invalid parameters')
+	print('Usage: levenshtein_distance.py [label_file] [result_file]')
