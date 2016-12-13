@@ -20,10 +20,10 @@ if len(sys.argv) >= 3:
 	print('------ Calculating ------')
 	msg = ''
 	lab = ''
-	with open('text.lab') as f:
+	with open(sys.argv[1], encoding='utf-8') as f:
 	    lab = f.read().replace('\n', '')
 
-	with open('text.res') as f:
+	with open(sys.argv[2], encoding='utf-8') as f:
 	    msg = f.read().replace('\n', '')
 
 	#result = wer(list(lab), list(msg), False)
