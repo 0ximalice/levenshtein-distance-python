@@ -21,10 +21,10 @@ if len(sys.argv) >= 3:
 	msg = ''
 	lab = ''
 	with open(sys.argv[1], encoding='utf-8') as f:
-	    lab = f.read().replace('\n', '')
+	    lab = f.read().replace('\n', '').replace(' ','')
 
 	with open(sys.argv[2], encoding='utf-8') as f:
-	    msg = f.read().replace('\n', '')
+	    msg = f.read().replace('\n', '').replace(' ','')
 
 	#result = wer(list(lab), list(msg), False)
 	result = levenshteinDistance(lab, msg)
